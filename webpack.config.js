@@ -1,7 +1,7 @@
-const path = require("path");
-const webpack = require("webpack")
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
 
 const PATHS = {
   src: path.resolve(__dirname, './src'),
@@ -9,84 +9,79 @@ const PATHS = {
 }
 
 module.exports = {
-  //已多次提及的唯webp一入口文件
-  entry: PATHS.src + "/main.js",
-  //打包输出
-  output: {
-    path: PATHS.dist,//打包后的文件存放的地方
-    filename: 'js/[name].js',//打包后输出文件的文件名
-    chunkFilename: 'js/[name].js'
+  entry: {
+    app: './src/main.js',           // 整个SPA的入口文件, 一切的文件依赖关系从它开始
+    vendors: ['vue', 'vue-router']  // 需要进行单独打包的文件
   },
-  //方便调试，可f12追踪源码
-  devtool: 'eval-source-map',
+  output: {
+    path: PATHS.dist,
+    filename: 'js/[name].js',
+  },
+  // 
+  devtool: '#eval-source-map',
   devServer: {
+    contentBase: "./dist",//本地服务器所加载的页面所在的目录
     historyApiFallback: true,//不跳转
-    inline: true//代码实时刷新
+    inline: true//实时刷新
+  },
+  module: {
+    rules: [{
+      test: /\.vue$/,
+      loader: 'vue-loader'
+    },
+    {
+      test: /\.js/,
+      loader: 'babel-loader',
+      exclude: /node_modules/
+    },
+    {
+      test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+      loader: 'url-loader?limit=10240&name=images/[name].[ext]'
+    },
+    {
+      test: /\.(woff|otf|eot|ttf)(\?.*)?$/,
+      loader: 'url-loader?limit=10240&name=fonts/[name].[ext]'
+    },
+    {
+      test: /\.less/,
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: [
+          'css-loader',
+          'less-loader'
+        ]
+      })
+    },
+    {
+      test: /\.css/,
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: [
+          'css-loader'
+        ]
+      })
+    }
+    ]
   },
   resolve: {
     alias: {
-      // 定义文件路径， 加速打包过程中webpack路径查找过程
-      'js': path.join(__dirname, 'src/js'),
-      'css': path.join(__dirname, 'src/css')
+      'vue$': 'vue/dist/vue.common.js',
+      'components': path.join(__dirname, 'src/components'),   // 定义文件路径， 加速打包过程中webpack路径查找过程
+      'lib': path.join(__dirname, 'src/lib'),
+      'less': path.join(__dirname, 'src/less'),
+      'utils': path.join(__dirname, 'src/utils')
     },
-     // 可以不加后缀, 直接使用 import xx from 'xx' 的语法
-    extensions: ['.js', '.less', '*', '.json']       
-  },
-  module: {
-    rules: [
-      {
-        test: /(\.jsx|\.js)$/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: [
-              "env", "react"
-            ]
-          }
-        },
-        exclude: /node_modules/
-      },
-      //css-loader 和 style-loader，二者处理的任务不同，css-loader使你能够使用类似@import 和 url(...)的方法实现 require()的功能,style-loader将所有的计算后的样式加入页面中，二者组合在一起使你能够把样式表嵌入webpack打包后的JS文件中。
-      {
-        test: /\.less/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            'css-loader',
-            'less-loader'
-          ]
-        })
-      },
-      {
-        test: /\.css/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            'css-loader'
-          ]
-        })
-      },
-      {
-          test: /\.(eot|svg|ttf|woff|woff2)\w*/,
-          loader: 'url-loader?limit=1000000'
-      },
-    ]
+    extensions: ['.js', '.less', '.vue', '*', '.json']        // 可以不加后缀, 直接使用 import xx from 'xx' 的语法
   },
   plugins: [
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      'window.jQuery': 'jquery',
-      Popper: ['popper.js', 'default']
-    }),
-    new HtmlWebpackPlugin({
-      template: path.resolve(PATHS.src, 'index.html'), //html模板路径
-      inject: 'body', // 是否将js放在body的末尾
-      hash: true,
-      cache: false,
+    new HtmlWebpackPlugin({                                   // html模板输出插件
+      title: 'nlskyfree',
+      template: './src/index.html',
+      inject: 'body',
+      filename: 'index.html'
     }),
     new ExtractTextPlugin({                                   // css抽离插件,单独放到一个style文件当中.
-      filename: `css/style.css`,
+      filename: 'css/style.css',
       allChunks: true,
       disable: false
     })
