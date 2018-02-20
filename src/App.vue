@@ -23,6 +23,7 @@
   import background from 'components/background'
   import announcement from 'components/announcement'
   import ArticleList from 'components/article-list'
+  import UaParse from 'utils/ua-parse'
 
   export default {
     data() {
@@ -51,6 +52,19 @@
       loadmoreArticle() {
         this.$store.dispatch('loadArticles', this.nextPageParams)
       }
+    },
+    mounted() {
+      // 加载配置
+      const userAgent = process.server ? req.headers['user-agent'] : navigator.userAgent
+      const { isMobile, isOpera, isIE, isSafari, isEdge, isFF, isBB, isChrome, isMaxthon, isIos } = UaParse(userAgent)
+      const mustJpg = (isIos || isFF || isMaxthon || isSafari || isBB || isIE || isEdge)
+      this.$store.commit('option/SET_IMG_EXT', mustJpg ? 'jpeg' : 'webp')
+      this.$store.commit('option/SET_MOBILE_LAYOUT', isMobile)
+      this.$store.commit('option/SET_USER_AGENT', userAgent)
+      // 配置数据
+      this.$store.dispatch('loadAdminInfo'),
+      this.$store.dispatch('loadGlobalOption'),
+      this.loadmoreArticle()
     }
   }
 </script>

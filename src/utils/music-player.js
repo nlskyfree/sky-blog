@@ -1,12 +1,12 @@
 
 import howler from 'howler'
-import Service from 'axios'
+import axios from 'axios'
 
 export default state => {
 
   if (!state.player) {
 
-    // console.log('init player!', state.list.data)
+    console.log('init player!', state.list.data)
     // return false
 
     // config
@@ -174,7 +174,7 @@ export default state => {
         } else {
           state.playerState.ready = false
           // console.log('请求这首音乐地址', song)
-          Service.get(`/music/url/${ song.id }`).then(response => {
+          axios.get(`/music/url/${ song.id }`).then(response => {
             const success = response.status && 
                             response.data && 
                             Object.is(response.data.code, 1) && 

@@ -95,6 +95,13 @@
       if (Object.is(this.$route.name, 'search-keyword')) {
         this.keyword = this.$route.params.keyword
       }
+      // 如果不是移动端的话，则请求热门文章
+      if (!this.$store.state.mobileLayout) {
+        this.$store.dispatch('loadHotArticles')
+      }
+
+      // 加载右侧标签列表
+      this.$store.dispatch('loadTagList')
     },
     computed: {
       tag() {
