@@ -1,11 +1,11 @@
   @font-face {
     font-family: 'CenturyGothic';
-    src: url('/fonts/CenturyGothic.ttf');
+    src: url('../fonts/CenturyGothic.ttf');
   }
   
   @font-face {
     font-family: 'DINRegular';
-    src: url('/fonts/DIN-Regular.ttf');
+    src: url('../fonts/DIN-Regular.ttf');
   }
   
   ::selection {
@@ -28,15 +28,15 @@
     box-shadow: none;
   }
   
-//   *, *:hover {
-//     .transition(background-color .25s linear,
-//                         color .05s linear,
-//                         margin .25s linear,
-//                         opacity .25s linear,
-//                         filter .25s linear,
-//                         visibility .25s linear,
-//                         transform .25s linear);
-//   }
+  // *, *:hover {
+  //   .transition(background-color .25s linear,
+  //                       color .05s linear,
+  //                       margin .25s linear,
+  //                       opacity .25s linear,
+  //                       filter .25s linear,
+  //                       visibility .25s linear,
+  //                       transform .25s linear);
+  // }
   
   ::-webkit-scrollbar {
     width: .5rem;
@@ -151,7 +151,7 @@
         }
   
         > .share-link {
-          width: calc((100% - (.445em * 11)) / 12);
+          width: calc(~"(100% - (.445em * 11)) / 12");
           height: 2.2em;
           line-height: 2.3em;
           background-color: #eee;

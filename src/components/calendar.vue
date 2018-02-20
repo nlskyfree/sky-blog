@@ -171,7 +171,7 @@
       > li {
         display: inline-block;
         float: left;
-        width: calc(100% / 7);
+        width: calc(~"100% / 7");
         text-align: center;
       }
     }

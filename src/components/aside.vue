@@ -38,14 +38,6 @@
         </li>
       </ul>
     </div>
-    <div class="aside-ad" v-if="false">
-      <a href="https://s.click.taobao.com/ZaXp1Rx" 
-         target="_blank" 
-         rel="external nofollow noopener" 
-         class="ad-box">
-        <img src="https://p1.bpimg.com/567571/e85fb6270effc4c7.jpg">
-      </a>
-    </div>
     <div class="aside-calendar">
       <calendar></calendar>
     </div>
@@ -207,6 +199,8 @@
 
         > .search-input {
           margin-right: 0;
+          // less 会解析算是与calc冲突，因此这里改造下
+          width: calc(~"100% - 6.5em - 1px");
           box-sizing: border-box;
         }
 
@@ -331,7 +325,7 @@
         > .full-column,
         > .full-page {
           display: inline-block;
-          width: calc((100% - 1rem) / 2);
+          width: calc(~"(100% - 1rem) / 2");
           height: 3rem;
           line-height: 3rem;
           text-align: center;

@@ -46,7 +46,7 @@
     display: inline-block;
     width: 11.5em;
     top: 5.5em;
-    left: calc((100% - 75em) / 2);
+    left: calc(~"(100% - 75em) / 2");
 
     .nav-list {
       padding: 0;
@@ -76,11 +76,6 @@
           line-height: 5rem;
           margin: 0;
           border-bottom: 1px dashed #d6d6d6;
-        }
-
-        &:last-child {
-          margin-top: 1rem;
-          margin-bottom: 0;
         }
 
         &.link-active {
