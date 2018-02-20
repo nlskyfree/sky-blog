@@ -43,19 +43,18 @@
     </div>
     <div class="aside-fixed-box" v-scroll-top>
       <div class="aside-tag">
-        <empty-box v-if="!tag.fetching && !tag.data.data.length">
+        <empty-box v-if="!tag.fetching && !tag.data.length">
           <slot>No Result Tags.</slot>
         </empty-box>
-        <ul class="aside-tag-list" v-else-if="!tag.fetching && tag.data.data.length">
+        <ul class="aside-tag-list" v-if="tag.fetching && tag.data.length">
           <router-link tag="li"
                        class="item"
                        :key="index"
                        :to="`/tag/${item.slug}`"
-                       v-for="(item, index) in tag.data.data">
+                       v-for="(item, index) in tag.data">
             <a class="title" :title="item.description">
               <i class="iconfont" 
-                 :class="[item.extends.find(t => Object.is(t.name, 'icon')).value]" 
-                 v-if="item.extends.find(t => Object.is(t.name, 'icon'))"></i>
+                 :class="[item.icon]""></i>
               <span>&nbsp;</span>
               <span>{{ item.name }}</span>
               <span>({{ item.count || 0 }})</span>

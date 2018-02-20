@@ -13,15 +13,24 @@
     "tag": [
         {
             "name": "计算机",
-            "count": "5"
+            "count": "5",
+            "icon": "icon-code-stroke",
+            "description": "计算机的世界",
+            "slug": "computer"
         },
         {
             "name": "灵魂",
-            "count": "225"
+            "count": "225",
+            "icon": "icon-coffee",
+            "description": "灵魂的世界",
+            "slug": "soul"
         },
         {
             "name": "网络",
-            "count": "31"
+            "count": "31",
+            "icon": "icon-sitemap",
+            "description": "网络的世界",
+            "slug": "web"
         }
     ]
 }

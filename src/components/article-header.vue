@@ -51,6 +51,7 @@
         })
       },
       currentTagIconClass() {
+        console.log(this.$store.state.tag.data.find)
         if (!this.currentTag) return ''
         const currentTagIcon = this.currentTag.extends.find(t => Object.is(t.name, 'icon'))
         return currentTagIcon ? currentTagIcon.value : 'icon-tag'

@@ -1,13 +1,6 @@
 <template>
   <div class="articles">
 
-    <!-- 列表头 -->
-    <transition name="module">
-      <div class="article-list-header" v-if="!Object.is($route.name, 'index')">
-        <list-header></list-header>
-      </div>
-    </transition>
-
     <!-- 列表 -->
     <div class="article-list">
       <transition name="module" mode="out-in">
