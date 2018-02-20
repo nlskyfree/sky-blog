@@ -5,7 +5,8 @@
     "main": "index.js",
     "scripts": {
       "start": "webpack-dev-server --open",
-      "build": "webpack"
+      "build": "webpack",
+      "dbserver": "json-server src/jsondb/db.json -p 3002 --watch"
     },
     "author": "nlskyfree",
     "license": "ISC",

@@ -105,6 +105,7 @@
     },
     computed: {
       tag() {
+        debugger
         return this.$store.state.tag
       },
       article() {

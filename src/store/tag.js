@@ -20,8 +20,9 @@ const mutations = {
     state.data = { data: [] }
   },
   GET_LIST_SUCCESS(state, action) {
-    state.fetching = false
-    state.data = action.result
+    debugger
+    // state.fetching = false
+    state.data = action
   }
 }
 

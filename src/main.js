@@ -11,7 +11,7 @@ Vue.component("empty-box", EmptyBox);
 Vue.component("loading-box", Loading);
 
 // 全局baseURL
-// axios.defaults.baseURL = 'http://localhost:3002';
+axios.defaults.baseURL = 'http://localhost:3002';
 Vue.config.debug = true;
 Vue.prototype.http = axios;
 

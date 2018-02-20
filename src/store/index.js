@@ -57,7 +57,8 @@ export default new Vuex.Store({
       commit('tag/REQUEST_LIST')
       return axios.get('/tag', { params })
         .then(response => {
-          const success = !!response.status && response.data && Object.is(response.data.code, 1)
+          debugger
+          const success = !!response.status && response.data
           if (success) commit('tag/GET_LIST_SUCCESS', response.data)
           if (!success) commit('tag/GET_LIST_FAILURE')
         })

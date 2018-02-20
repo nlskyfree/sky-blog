@@ -46,7 +46,7 @@
     name: 'article-list-header',
     computed: {
       currentTag() {
-        return this.$store.state.tag.data.data.find((tag, index, arr) => {
+        return this.$store.state.tag.data.find((tag, index, arr) => {
           return Object.is(tag.slug, this.$route.params.tag_slug)
         })
       },
