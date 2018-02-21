@@ -4,18 +4,18 @@
       <background></background>
       <layout-header></layout-header>
       <main id="main">
-        <layout-nav></layout-nav>
+        <layout-nav v-if="!oneColumn && !mobileLayout"></layout-nav>
         <div id="main-content" 
              class="main-content" 
              :class="{ 
-               'full-column': fullColumn, 
-               'error-column': errorColumn,
+               'two-column': twoColumn, 
+               'one-column': oneColumn,
                'mobile-layout': mobileLayout,
                [$route.name]: true
               }">
           <router-view></router-view>
         </div>
-        <layout-aside v-if="!fullColumn && !errorColumn && !mobileLayout"></layout-aside>
+        <layout-aside v-if="!twoColumn && !oneColumn && !mobileLayout"></layout-aside>
       </main>
       <layout-footer></layout-footer>
     </div>
@@ -44,11 +44,11 @@
     },
 
     computed: {
-      fullColumn () {
-        return this.$store.state.option.fullColumn
+      twoColumn () {
+        return this.$store.state.option.twoColumn
       },
-      errorColumn () {
-        return this.$store.state.option.errorColumn
+      oneColumn () {
+        return this.$store.state.option.oneColumn
       },
       mobileLayout() {
         return this.$store.state.option.mobileLayout
@@ -115,12 +115,12 @@
           overflow-y: auto;
         }
 
-        &.full-column {
+        &.two-column {
           width: 62.5em;
           .css3-prefix(transition, width .35s);
         }
 
-        &.error-column {
+        &.one-column {
           width: 100%;
           margin: 0;
           .css3-prefix(transition, width .35s);

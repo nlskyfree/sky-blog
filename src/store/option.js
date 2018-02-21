@@ -8,8 +8,8 @@ const state = () => {
   return {
 
     // 页面的栏目展示类型（3栏/2栏）
-    fullColumn: false,
-    errorColumn: false,
+    oneColumn: false,
+    twoColumn: false,
 
     // 图片格式
     imgExt: 'webp',
@@ -77,13 +77,13 @@ const mutations = {
   },
 
   // 设置栏目结构
-  SET_FULL_COLUMN(state, action) {
-    state.fullColumn = action
+  SET_TWO_COLUMN(state, action) {
+    state.twoColumn = action
   },
 
   // 设置错误页面模板
-  SET_ERROR_COLUMN(state, action) {
-    state.errorColumn = action
+  SET_ONE_COLUMN(state, action) {
+    state.oneColumn = action
   },
 
   // 获取服务端配置的管理员信息
