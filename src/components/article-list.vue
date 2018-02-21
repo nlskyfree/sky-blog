@@ -4,11 +4,11 @@
     <!-- 列表 -->
     <div class="article-list">
       <transition name="module" mode="out-in">
-        <empty-box class="article-empty-box" v-if="!article.fetching && !article.data.data.length">
+        <empty-box class="article-empty-box" v-if="!article.fetching && !article.data.length">
           <slot>No Result Article.</slot>
         </empty-box>
         <transition-group name="fade" tag="div" v-else>
-          <list-item v-for="(item, index) in article.data.data" :item="item" :key="index"></list-item>
+          <list-item v-for="(item, index) in article.data" :item="item" :key="index"></list-item>
         </transition-group>
       </transition>
     </div>
@@ -41,8 +41,9 @@
     },
     computed: {
       canLoadMore() {
-        const { current_page, total_page } = this.article.data.pagination
-        const hasArticles = this.article.data.pagination
+        console.log(this.article)
+        const { current_page, total_page } = this.article.pagination
+        const hasArticles = this.article.pagination
         return hasArticles ? (current_page < total_page) : false
       }
     }

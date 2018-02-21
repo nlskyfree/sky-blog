@@ -44,7 +44,7 @@ export default new Vuex.Store({
       commit('option/REQUEST_GLOBAL_OPTIONS')
       return axios.get('/option')
         .then(response => {
-          const success = !!response.status && response.data && Object.is(response.data.code, 1)
+          const success = !!response.status && response.data
           if (success) commit('option/REQUEST_GLOBAL_OPTIONS_SUCCESS', response.data)
           if (!success) commit('option/REQUEST_GLOBAL_OPTIONS_FAILURE')
         }, err => {
@@ -57,7 +57,6 @@ export default new Vuex.Store({
       commit('tag/REQUEST_LIST')
       return axios.get('/tag', { params })
         .then(response => {
-          debugger
           const success = !!response.status && response.data
           if (success) commit('tag/GET_LIST_SUCCESS', response.data)
           if (!success) commit('tag/GET_LIST_FAILURE')
@@ -86,7 +85,7 @@ export default new Vuex.Store({
       commit('article/REQUEST_HOT_LIST')
       return axios.get('/article', { params: { hot: 1 } })
         .then(response => {
-          const success = !!response.status && response.data && Object.is(response.data.code, 1)
+          const success = !!response.status && response.data
           if (success) commit('article/GET_HOT_LIST_SUCCESS', response.data)
           if (!success) commit('article/GET_HOT_LIST_FAILURE')
         }, err => {
@@ -167,7 +166,7 @@ export default new Vuex.Store({
       commit('announcement/REQUEST_LIST')
       return axios.get('/announcement', { params })
         .then(response => {
-          const success = !!response.status && response.data && Object.is(response.data.code, 1)
+          const success = !!response.status && response.data
           if (success) commit('announcement/GET_LIST_SUCCESS', response.data)
           if (!success) commit('announcement/GET_LIST_FAILURE')
         }, err => {
@@ -195,7 +194,7 @@ export default new Vuex.Store({
       commit('article/REQUEST_LIST')
       return axios.get('/article', { params })
         .then(response => {
-          const success = !!response.status && response.data && Object.is(response.data.code, 1)
+          const success = !!response.status && response.data
           const isFirstPage = params.page && params.page > 1
           const commitName = `article/${isFirstPage ? 'ADD' : 'GET'}_LIST_SUCCESS`
           if (success) commit(commitName, response.data)

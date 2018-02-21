@@ -61,9 +61,11 @@
       this.$store.commit('option/SET_IMG_EXT', mustJpg ? 'jpeg' : 'webp')
       this.$store.commit('option/SET_MOBILE_LAYOUT', isMobile)
       this.$store.commit('option/SET_USER_AGENT', userAgent)
+      this.$store.dispatch('loadHotArticles')
+      this.$store.dispatch('loadAnnouncements')
       // 配置数据
-      this.$store.dispatch('loadAdminInfo'),
-      this.$store.dispatch('loadGlobalOption'),
+      // this.$store.dispatch('loadAdminInfo'),
+      // this.$store.dispatch('loadGlobalOption'),
       this.loadmoreArticle()
     }
   }

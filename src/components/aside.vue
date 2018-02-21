@@ -24,11 +24,11 @@
         <i class="iconfont icon-list"></i>
         <span>热门文章</span>
       </p>
-      <empty-box v-if="!article.fetching && !article.data.data.length">
+      <empty-box v-if="!article.fetching && !article.data.length">
         <slot>No Result Hot Articles.</slot>
       </empty-box>
-      <ul class="aside-article-list" v-else-if="!article.fetching && article.data.data.length">
-        <li class="item" :key="item.id" v-for="item in article.data.data.slice(0, 10)">
+      <ul class="aside-article-list" v-else-if="!article.fetching && article.data.length">
+        <li class="item" :key="item.id" v-for="item in article.data.slice(0, 10)">
           <span class="index"></span>
           <router-link class="title" 
                        :title="`${item.title} - [ ${item.meta.comments} 条评论  |  ${item.meta.likes} 人喜欢 ]`"
@@ -54,7 +54,7 @@
                        v-for="(item, index) in tag.data">
             <a class="title" :title="item.description">
               <i class="iconfont" 
-                 :class="[item.icon]""></i>
+                 :class="[item.icon]"></i>
               <span>&nbsp;</span>
               <span>{{ item.name }}</span>
               <span>({{ item.count || 0 }})</span>
@@ -104,7 +104,6 @@
     },
     computed: {
       tag() {
-        debugger
         return this.$store.state.tag
       },
       article() {

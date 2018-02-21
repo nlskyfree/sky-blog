@@ -91,8 +91,7 @@ const mutations = {
     state.adminInfo.fetching = true
   },
   REQUEST_ADMIN_INFO_SUCCESS(state, action) {
-    state.adminInfo.fetching = false
-    state.adminInfo.data = action.result
+    state.adminInfo.data = action
   },
   REQUEST_ADMIN_INFO_FAILURE(state) {
     state.adminInfo.fetching = false
@@ -104,8 +103,7 @@ const mutations = {
     state.globalOption.fetching = true
   },
   REQUEST_GLOBAL_OPTIONS_SUCCESS(state, action) {
-    state.globalOption.fetching = false
-    state.globalOption.data = action.result
+    state.globalOption.data = action
   },
   REQUEST_GLOBAL_OPTIONS_FAILURE(state) {
     state.globalOption.fetching = false

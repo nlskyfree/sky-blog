@@ -1,39 +1,39 @@
 {
-    "name": "sky-blog",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-      "start": "webpack-dev-server --open",
-      "build": "webpack",
-      "dbserver": "json-server src/jsondb/db.json -p 3002 --watch"
-    },
-    "author": "nlskyfree",
-    "license": "ISC",
-    "dependencies": {
-      "axios": "^0.17.1",
-      "howler": "^2.0.8",
-      "particles.js": "^2.0.0",
-      "vue": "^2.5.13",
-      "vue-router": "^3.0.1",
-      "vuex": "^3.0.1"
-    },
-    "devDependencies": {
-      "babel": "^6.23.0",
-      "babel-core": "^6.26.0",
-      "babel-loader": "^7.1.2",
-      "css-loader": "^0.28.9",
-      "extract-text-webpack-plugin": "^3.0.2",
-      "file-loader": "^1.1.6",
-      "html-webpack-plugin": "^2.30.1",
-      "less": "^2.7.3",
-      "less-loader": "^4.0.5",
-      "style-loader": "^0.20.1",
-      "url-loader": "^0.6.2",
-      "vue-loader": "^14.1.1",
-      "vue-template-compiler": "^2.5.13",
-      "webpack": "^3.10.0",
-      "webpack-dev-server": "^2.11.1"
-    }
+  "name": "sky-blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --open",
+    "build": "webpack",
+    "dbserver": "json-server src/jsondb/db.json -p 3002 --watch"
+  },
+  "author": "nlskyfree",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "howler": "^2.0.8",
+    "particles.js": "^2.0.0",
+    "vue": "^2.5.13",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "css-loader": "^0.28.9",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.6",
+    "html-webpack-plugin": "^2.30.1",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
+    "style-loader": "^0.20.1",
+    "url-loader": "^0.6.2",
+    "vue-awesome-swiper": "^3.1.2",
+    "vue-loader": "^14.1.1",
+    "vue-template-compiler": "^2.5.13",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.1"
   }
-  
+}

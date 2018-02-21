@@ -4,15 +4,15 @@
       <i class="iconfont icon-clock-stroke"></i>
     </div>
     <transition name="module" mode="out-in">
-      <empty-box class="announcement-empty-box" v-if="!announcement.data.data.length">
+      <empty-box class="announcement-empty-box" v-if="!announcement.data.length">
         <slot>No Result Announcement.</slot>
       </empty-box>
       <div class="swiper" v-swiper:swiper="swiperOption" v-else>
         <div class="swiper-wrapper">
           <div class="swiper-slide item"
                :key="index"
-               v-for="(announcement, index) in announcement.data.data.slice(0, 9)">
-            <div class="content" v-bind="announcement.content"></div>
+               v-for="(item, index) in announcement.data.slice(0, 9)">
+            <div class="content">{{item.content}}</div>
           </div>
         </div>
         <div class="swiper-button-prev">

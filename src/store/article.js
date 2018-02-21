@@ -8,16 +8,14 @@ const state = () => {
   return {
     hot: {
       fetching: false,
-      data: { data: [] }
+      data: []
     },
     list: {
       fetching: false,
-      data: {
-        pagination: {
-          current_page: 0
-        },
-        data: []
-      }
+      pagination: {
+        current_page: 0
+      },
+      data: []
     },
     detail: {
       fetching: false,
@@ -31,11 +29,9 @@ const mutations = {
   // List
   CLEAR_LIST(state) {
     state.list.data = {
-      result: {
-        pagination: {
-          current_page: 0
-        },
-        data: []
+      data: [],
+      pagination: {
+        current_page: 0
       }
     }
   },
@@ -46,13 +42,11 @@ const mutations = {
     state.list.fetching = false
   },
   GET_LIST_SUCCESS(state, action) {
-    state.list.fetching = false
-    state.list.data = action.result
+    state.list.data = action
   },
   ADD_LIST_SUCCESS(state, action) {
-    state.list.fetching = false
-    state.list.data.data.push.apply(state.list.data.data, action.result.data)
-    state.list.data.pagination = action.result.pagination
+    state.list.data.push.apply(state.list.data, action.data)
+    state.list.data.pagination = action.pagination
   },
 
   // Hot
@@ -63,8 +57,7 @@ const mutations = {
     state.hot.fetching = false
   },
   GET_HOT_LIST_SUCCESS(state, action){
-    state.hot.fetching = false
-    state.hot.data = action.result
+    state.hot.data = action
   },
 
   // Detail
