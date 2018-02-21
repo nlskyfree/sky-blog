@@ -31,7 +31,7 @@ export default new Vuex.Store({
       commit('option/REQUEST_ADMIN_INFO')
       return axios.get('/auth')
         .then(response => {
-          const success = !!response.status && response.data && Object.is(response.data.code, 1)
+          const success = !!response.status && response.data
           if (success) commit('option/REQUEST_ADMIN_INFO_SUCCESS', response.data)
           if (!success) commit('option/REQUEST_ADMIN_INFO_FAILURE')
         }, err => {
@@ -71,7 +71,7 @@ export default new Vuex.Store({
       commit('category/REQUEST_LIST')
       return axios.get('/category', { params })
         .then(response => {
-          const success = !!response.status && response.data && Object.is(response.data.code, 1)
+          const success = !!response.status && response.data
           if (success) commit('category/GET_LIST_SUCCESS', response.data)
           if (!success) commit('category/GET_LIST_FAILURE')
         })
@@ -104,7 +104,7 @@ export default new Vuex.Store({
       commit('comment/REQUEST_LIST')
       return axios.get('/comment', { params })
         .then(response => {
-          const success = !!response.status && response.data && Object.is(response.data.code, 1)
+          const success = !!response.status && response.data
           if (success) {
             if (Object.is(params.sort, -1)) response.data.result.data.reverse()
             commit('comment/GET_LIST_SUCCESS', response.data)
@@ -120,7 +120,7 @@ export default new Vuex.Store({
       commit('comment/POST_ITEM')
       return axios.post('/comment', comment)
         .then(response => {
-          const success = !!response.status && response.data && Object.is(response.data.code, 1)
+          const success = !!response.status && response.data
           if (success) {
             commit('comment/POST_ITEM_SUCCESS', response.data)
             return Promise.resolve(response.data)
@@ -138,7 +138,7 @@ export default new Vuex.Store({
     likeArticleOrPageOrComment({ commit }, like) {
       return axios.post('/like', like)
         .then(response => {
-          const success = !!response.status && response.data && Object.is(response.data.code, 1)
+          const success = !!response.status && response.data
           if (success) {
             let mutation
             switch (like.type) {
@@ -179,7 +179,7 @@ export default new Vuex.Store({
       commit('sitemap/REQUEST_ARTICLES')
       return axios.get('/article', { params })
         .then(response => {
-          const success = !!response.status && response.data && Object.is(response.data.code, 1)
+          const success = !!response.status && response.data
           const commitName = `sitemap/GET_ARTICLES_SUCCESS`
           if (success) commit(commitName, response.data)
           if (!success) commit('sitemap/GET_ARTICLES_FAILURE')
@@ -210,7 +210,7 @@ export default new Vuex.Store({
       commit('article/REQUEST_DETAIL')
       return axios.get(`/article/${params.article_id}`)
         .then(response => {
-          const success = !!response.status && response.data && Object.is(response.data.code, 1)
+          const success = !!response.status && response.data
           if (success) commit('article/GET_DETAIL_SUCCESS', response.data)
           if (!success) commit('article/GET_DETAIL_FAILURE')
           return Promise.resolve(response.data)
@@ -230,7 +230,7 @@ export default new Vuex.Store({
       commit('project/REQUEST_GUTHUB_REPOSITORIES')
       return axios.get(`/github`)
         .then(response => {
-          const success = !!response.status && response.data && Object.is(response.data.code, 1)
+          const success = !!response.status && response.data
           if (success) commit('project/REQUEST_GUTHUB_REPOSITORIES_SUCCESS', response.data)
           if (!success) commit('project/REQUEST_GUTHUB_REPOSITORIES_FAILURE')
         }, err => {
@@ -243,7 +243,7 @@ export default new Vuex.Store({
       EventBus.REQUEST_LIST()
       return axios.get('/music/list/638949385')
         .then(response => {
-          const success = !!response.status && response.data && Object.is(response.data.code, 1)
+          const success = !!response.status && response.data
           if (success) {
             EventBus.GET_LIST_SUCCESS(response.data)
             EventBus.INIT_PLAYER()
@@ -259,7 +259,7 @@ export default new Vuex.Store({
       EventBus.REQUEST_SONG()
       return axios.get(`/music/song/${params.song_id}`)
         .then(response => {
-          const success = !!response.status && response.data && Object.is(response.data.code, 1)
+          const success = !!response.status && response.data
           if (success) EventBus.GET_SONG_SUCCESS(response.data)
           if (!success) EventBus.GET_SONG_FAILURE()
         }, err => {
@@ -272,7 +272,7 @@ export default new Vuex.Store({
       EventBus.REQUEST_LRC()
       return axios.get(`/music/lrc/${params.song_id}`)
         .then(response => {
-          const success = !!response.status && response.data && Object.is(response.data.code, 1)
+          const success = !!response.status && response.data
           if (success) EventBus.GET_LRC_SUCCESS(response.data)
           if (!success) EventBus.GET_LRC_FAILURE()
         }, err => {

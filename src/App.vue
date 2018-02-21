@@ -5,11 +5,17 @@
       <layout-header></layout-header>
       <main id="main">
         <layout-nav></layout-nav>
-        <div class="main-content">
-          <announcement :announcement="announcement"></announcement>
-          <article-list :article="article" @loadmore="loadmoreArticle"></article-list>
+        <div id="main-content" 
+             class="main-content" 
+             :class="{ 
+               'full-column': fullColumn, 
+               'error-column': errorColumn,
+               'mobile-layout': mobileLayout,
+               [$route.name]: true
+              }">
+          <router-view></router-view>
         </div>
-        <layout-aside></layout-aside>
+        <layout-aside v-if="!fullColumn && !errorColumn && !mobileLayout"></layout-aside>
       </main>
       <layout-footer></layout-footer>
     </div>
@@ -21,8 +27,6 @@
   import nav from 'components/nav'
   import aside from 'components/aside'
   import background from 'components/background'
-  import announcement from 'components/announcement'
-  import ArticleList from 'components/article-list'
   import UaParse from 'utils/ua-parse'
 
   export default {
@@ -37,22 +41,20 @@
       "layout-footer": footer,
       "layout-nav": nav,
       "layout-aside": aside,
-      announcement,
-      "article-list": ArticleList
     },
+
     computed: {
-      article() {
-        return this.$store.state.article.list
+      fullColumn () {
+        return this.$store.state.option.fullColumn
       },
-      announcement() {
-        return this.$store.state.announcement
-      }
+      errorColumn () {
+        return this.$store.state.option.errorColumn
+      },
+      mobileLayout() {
+        return this.$store.state.option.mobileLayout
+      },
     },
-    methods: {
-      loadmoreArticle() {
-        this.$store.dispatch('loadArticles', this.nextPageParams)
-      }
-    },
+    
     mounted() {
       // 加载配置
       const userAgent = process.server ? req.headers['user-agent'] : navigator.userAgent
@@ -62,11 +64,9 @@
       this.$store.commit('option/SET_MOBILE_LAYOUT', isMobile)
       this.$store.commit('option/SET_USER_AGENT', userAgent)
       this.$store.dispatch('loadHotArticles')
-      this.$store.dispatch('loadAnnouncements')
       // 配置数据
       // this.$store.dispatch('loadAdminInfo'),
       // this.$store.dispatch('loadGlobalOption'),
-      this.loadmoreArticle()
     }
   }
 </script>

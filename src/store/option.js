@@ -77,12 +77,12 @@ const mutations = {
   },
 
   // 设置栏目结构
-  SET_FULL_COLUMU(state, action) {
+  SET_FULL_COLUMN(state, action) {
     state.fullColumn = action
   },
 
   // 设置错误页面模板
-  SET_ERROR_COLUMU(state, action) {
+  SET_ERROR_COLUMN(state, action) {
     state.errorColumn = action
   },
 
