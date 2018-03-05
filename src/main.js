@@ -4,6 +4,7 @@ import router from './route';
 import store from './store'
 import axios from 'axios';
 import './less/index';
+import CommentBox from 'components/common/comment-box'
 import EmptyBox from 'components/common/empty-box'
 import Loading from 'components/common/loading'
 import filters from './filters'
@@ -11,6 +12,7 @@ import VueAwesomeSwiper from 'vue-awesome-swiper/dist/ssr'
 import 'swiper/dist/css/swiper.css'
 
 // 全局组件注册
+Vue.component("comment-box", CommentBox);
 Vue.component("empty-box", EmptyBox);
 Vue.component("loading-box", Loading);
 // 自定义过滤器注册

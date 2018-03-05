@@ -5,29 +5,25 @@
         <i class="iconfont icon-home"></i>
         <span>Home</span>
       </router-link>
-      <router-link to="/article" class="item">
+      <router-link to="/sitemap" class="item">
         <i class="iconfont icon-code"></i>
-        <span>Article</span>
+        <span>Sitemap</span>
       </router-link>
       <router-link to="/project" class="item">
         <i class="iconfont icon-tool"></i>
         <span>Project</span>
       </router-link>
-      <router-link to="/music" class="item">
-        <i class="iconfont icon-netease-music"></i>
-        <span>Music</span>
-      </router-link>
       <router-link to="/about" class="item">
         <i class="iconfont icon-user"></i>
         <span>About</span>
       </router-link>
-      <router-link to="/service" class="item">
-        <i class="iconfont icon-zan-top"></i>
-        <span>Service</span>
-      </router-link>
       <router-link to="/guestbook" class="item">
         <i class="iconfont icon-comment"></i>
         <span>Guestbook</span>
+      </router-link>
+      <router-link to="/music" class="item">
+        <i class="iconfont icon-netease-music"></i>
+        <span>Music</span>
       </router-link>
     </nav>
   </div>

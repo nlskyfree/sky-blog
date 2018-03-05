@@ -20,7 +20,7 @@
                 </p>
                 <p class="item">
                   <i class="iconfont icon-music"></i>
-                  <nuxt-link to="/music">Jazz-HipHop, Electronic, Disco, Rock, Punk.</nuxt-link>
+                  <router-link to="/music">Jazz-HipHop, Electronic, Disco, Rock, Punk.</router-link>
                 </p>
                 <p class="item">
                   <i class="iconfont icon-like"></i>
@@ -138,8 +138,8 @@
                 </div>
                 <img :src="gravatar" class="avatar">
                 <div class="desc">
-                  <h2 class="name"><strong>Surmon</strong></h2>
-                  <p class="skill">JS Stack Developer.</p>
+                  <h2 class="name"><strong>NLSkyfree</strong></h2>
+                  <p class="skill">Full Stack Developer.</p>
                 </div>
                 <a class="followme" 
                    href="" 
@@ -147,9 +147,6 @@
                    v-if="!mobileLayout">Friend me</a>
                 <div class="wechat" v-if="!mobileLayout"></div>
               </div>
-            </div>
-            <div class="about-map" v-if="!mobileLayout">
-              <iframe src="/partials/map.html" style="width: 100%; height: 236px;"></iframe>
             </div>
             <div class="about-project">
               <router-link to="/project" class="project-link">

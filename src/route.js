@@ -1,16 +1,17 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import main from 'components/main'
-import project from 'components/project'
-import music from 'components/music'
-import about from 'components/about'
-import guestbook from 'components/guestbook'
+import project from 'components/pages/project'
+import sitemap from 'components/pages/sitemap'
+import music from 'components/pages/music'
+import about from 'components/pages/about'
+import guestbook from 'components/pages/guestbook'
 
 Vue.use(Router);
 
 // 哪个菜单需要几列显示
 const oneColumnPages = ['music']
-const twoColumnPages = ['project', 'about']
+const twoColumnPages = ['project', 'about', 'article']
 
 const router = new Router({
   // 对应路由增加class高亮
@@ -21,8 +22,9 @@ const router = new Router({
       name: 'home',
       component: main
     },{
-      path: '/article',
-      name: 'article',
+      path: '/sitemap',
+      name: 'sitemap',
+      component: sitemap
     },{
       path: '/project',
       name: 'project',

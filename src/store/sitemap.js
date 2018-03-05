@@ -10,7 +10,7 @@ const state = () => {
   return {
     articles: {
       fetching: false,
-      data: { data: [] }
+      data: []
     }
   }
 }
@@ -23,11 +23,10 @@ const mutations = {
     state.articles.fetching = false
   },
   GET_ARTICLES_SUCCESS(state, action) {
-    state.articles.fetching = false
-    state.articles.data = action.result
+    state.articles.data = action
   },
   TOGGLE_ARTICLE_OPEN(state, index) {
-    const article = state.articles.data.data[index]
+    const article = state.articles.data[index]
     if (article) {
       Vue.set(article, 'open', !article.open)
     }
