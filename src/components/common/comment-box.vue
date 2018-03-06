@@ -44,10 +44,10 @@
                  rel="external nofollow noopener"
                  :href="comment.author.site" 
                  @click.stop="clickUser($event, comment.author)">
+                <!-- <img :alt="comment.author.name || '匿名用户'"
+                     :src="gravatar(comment.author.email) || `../../images/anonymous.jpg`"> -->
                 <img :alt="comment.author.name || '匿名用户'"
-                     :src="gravatar(comment.author.email)" v-if="gravatar(comment.author.email)">
-                <img :alt="comment.author.name || '匿名用户'"
-                     :src="../../images/anonymous.jpg" v-else">
+                     src="../../images/anonymous.jpg">
               </a>
             </div>
             <div class="cm-body">
@@ -175,8 +175,9 @@
       <div class="editor-box">
         <div class="user">
           <div class="gravatar" v-if="!mobileLayout">
-            <img :alt="user.name || '匿名用户'"
-                 :src="user.gravatar || `../../images/anonymous.jpg`">
+            <!-- <img :alt="user.name || '匿名用户'"
+                 :src="user.gravatar || `../../images/anonymous.jpg`"> -->
+            <img :alt="user.name || '匿名用户'" src="../../images/anonymous.jpg">
           </div>
         </div>
         <div class="editor">

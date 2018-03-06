@@ -8,7 +8,7 @@
               <div class="desc">
                 <p class="item">
                   <i class="iconfont icon-user"></i>
-                  <span><span class="first-letter">I</span>'m Nlskyfree, a (90+) (小) Javascript (鲜) stack (肉) developer.</span>
+                  <span><span class="first-letter">I</span>'m Nlskyfree, a (90+) (小) full (腊) stack (肉) developer.</span>
                 </p>
                 <p class="item">
                   <i class="iconfont icon-comment-discussion"></i>
@@ -84,21 +84,6 @@
                        rel="external nofollow noopenter">
                       <i class="iconfont icon-weibo"></i>
                     </a>
-                    <a href="https://twitter.com/surmon_me" 
-                       target="_blank" 
-                       rel="external nofollow noopenter">
-                      <i class="iconfont icon-twitter"></i>
-                    </a>
-                    <a href="https://www.facebook.com/surmon.me" 
-                       target="_blank" 
-                       rel="external nofollow noopenter">
-                      <i class="iconfont icon-facebook"></i>
-                    </a>
-                    <a href="https://www.instagram.com/surmon666/" 
-                       target="_blank" 
-                       rel="external nofollow noopenter">
-                      <i class="iconfont icon-instagram"></i>
-                    </a>
                   </span>
                 </p>
                 <p class="item">
@@ -125,18 +110,18 @@
               </div>
               <div class="gravatar">
                 <div class="background be-2">
-                  <img src="/images/about-background-be-2.jpg" alt="background" class="image">
+                  <img src="https://cdn.surmon.me/images/about-background-be-2.jpg" alt="background" class="image">
                 </div>
                 <div class="background be-1">
-                  <img src="/images/about-background-be-1.jpg" alt="background" class="image">
+                  <img src="https://cdn.surmon.me/images/about-background-be-1.jpg" alt="background" class="image">
                 </div>
                 <div class="background star-1">
-                  <img src="/images/about-background-star-1.png" alt="background-star" class="image">
+                  <img src="https://cdn.surmon.me/images/about-background-star-1.png" alt="background-star" class="image">
                 </div>
                 <div class="background star-2">
-                  <img src="/images/about-background-star-2.png" alt="background-star" class="image">
+                  <img src="https://cdn.surmon.me/images/about-background-star-2.png" alt="background-star" class="image">
                 </div>
-                <img :src="gravatar" class="avatar">
+                <img src="https://s.gravatar.com/avatar/b2d6f363900005ba5f72ccd7c17e1782?s=80" class="avatar">
                 <div class="desc">
                   <h2 class="name"><strong>NLSkyfree</strong></h2>
                   <p class="skill">Full Stack Developer.</p>
@@ -145,7 +130,6 @@
                    href="" 
                    @click.stop.prevent=""
                    v-if="!mobileLayout">Friend me</a>
-                <div class="wechat" v-if="!mobileLayout"></div>
               </div>
             </div>
             <div class="about-project">
@@ -168,13 +152,6 @@
       title: 'About'
     },
     computed: {
-      gravatar() {
-        // const gravatar = null
-        const gravatar = this.$store.state.option.adminInfo.data.gravatar
-        return !!gravatar 
-                ? `${gravatar}?imageView2/1/w/360/h/360/interlace/1/q/75|imageslim` 
-                : `${this.cdnUrl}/images/gravatar.jpg`
-      },
       mobileLayout() {
         return this.$store.state.option.mobileLayout
       }
@@ -390,12 +367,6 @@
                 > .avatar {
                   .css3-prefix(transform, rotate(360deg));
                 }
-
-
-                > .wechat {
-                  visibility: visible;
-                  opacity: .8;
-                }
               }
 
               > .avatar {
@@ -432,20 +403,6 @@
                   color: @white;
                   background-color: @primary;
                 }
-              }
-
-              > .wechat {
-                opacity: 0;
-                visibility: hidden;
-                position: absolute;
-                top: .6rem;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-image: url('/images/wechat.jpg');
-                background-size: contain;
-                background-position: bottom;
-                z-index: 9;
               }
             }
 
