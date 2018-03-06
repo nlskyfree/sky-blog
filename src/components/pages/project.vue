@@ -8,7 +8,7 @@
         <a target="_blank"
            class="item-content" 
            rel="external nofollow noopenter"
-           :href="project.html_url"
+           :href="project.htmlUrl"
            :title="project.description">
           <i class="iconfont" :class="[buildIcon(project)]"></i>
           <h3 class="title">{{ project.name }}</h3>
@@ -21,11 +21,11 @@
             </span>
             <span class="item fork">
               <i class="iconfont icon-git-fork"></i>
-              <span>{{ project.forks_count }}</span>
+              <span>{{ project.forksCount }}</span>
             </span>
             <span class="item issues">
               <i class="iconfont icon-git-issue"></i>
-              <span>{{ project.open_issues_count }}</span>
+              <span>{{ project.openIssuesCount }}</span>
             </span>
           </p>
         </a>
