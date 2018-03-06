@@ -6,12 +6,13 @@ import sitemap from 'components/pages/sitemap'
 import music from 'components/pages/music'
 import about from 'components/pages/about'
 import guestbook from 'components/pages/guestbook'
+import article from 'components/pages/article'
 
 Vue.use(Router);
 
 // 哪个菜单需要几列显示
 const oneColumnPages = ['music']
-const twoColumnPages = ['project', 'about', 'article']
+const twoColumnPages = ['project', 'about']
 
 const router = new Router({
   // 对应路由增加class高亮
@@ -44,6 +45,10 @@ const router = new Router({
       path: '/guestbook',
       name: 'guestbook',
       component: guestbook
+    },{
+      path: '/article/:id',
+      name: 'article',
+      component: article
     }
   ]
 })

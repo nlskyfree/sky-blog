@@ -14,13 +14,11 @@
         "id": "1",
         "title": "文章1",
         "description": "这是一篇不知道啥的文章",
-        "create_at": "2017/1/3",
+        "createAt": "2017/1/3",
         "thumb": "",
-        "meta": {
-            "views": "115",
-            "comments": "131",
-            "likes": "234"
-        },
+        "views": "115",
+        "comments": "131",
+        "likes": "234",
         "category": [{
             "name": "计算机",
             "slug": "soul"
@@ -34,13 +32,11 @@
         "id": "2",
         "title": "文章2",
         "description": "这是一篇不知道啥的文章",
-        "create_at": "2017/4/29",
+        "createAt": "2017/4/29",
         "thumb": "",
-        "meta": {
-            "views": "323",
-            "comments": "512",
-            "likes": "442"
-        },
+        "views": "323",
+        "comments": "512",
+        "likes": "442",
         "category": [{
             "name": "计算机",
             "slug": "Think"

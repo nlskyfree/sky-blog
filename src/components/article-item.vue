@@ -3,8 +3,7 @@
     <div class="item-content" :class="{ mobile: mobileLayout }">
       <div class="item-thumb" v-if="!mobileLayout">
         <router-link :to="`/article/${item.id}`">
-          <img class="item-thumb-img" 
-               :src="buildThumb(item.thumb)"
+          <img class="item-thumb-img" src="../images/thumb-article.jpg"
                :alt="item.title"
                :title="item.title">
         </router-link>
@@ -17,19 +16,19 @@
         <div class="item-meta">
           <span class="date">
             <i class="iconfont icon-clock"></i>
-            <span>{{ item.create_at | toYMD }}</span>
+            <span>{{ item.createAt | toYMD }}</span>
           </span>
           <span class="views">
             <i class="iconfont icon-eye"></i>
-            <span>{{ item.meta.views || 0 }}</span>
+            <span>{{ item.views || 0 }}</span>
           </span>
           <span class="comments">
             <i class="iconfont icon-comment"></i>
-            <span>{{ item.meta.comments || 0 }}</span>
+            <span>{{ item.comments || 0 }}</span>
           </span>
           <span class="likes">
             <i class="iconfont icon-like"></i>
-            <span>{{ item.meta.likes || 0 }}</span>
+            <span>{{ item.likes || 0 }}</span>
           </span>
           <span class="categories">
             <i class="iconfont icon-list"></i>
@@ -66,9 +65,10 @@
       }
     },
     methods: {
+      // 先写死，webpack对动态路径不支持，这里需要使用拷贝插件，直接拷贝图片
       buildThumb(thumb) {
-        if (!thumb) return `${this.cdnUrl}/images/thumb-article.jpg`
-        return `${thumb}?imageView2/1/w/350/h/238/format/${this.imgExt}/interlace/1/q/75|watermark/2/text/U3VybW9uLm1l/font/Y2FuZGFyYQ==/fontsize/460/fill/I0ZGRkZGRg==/dissolve/23/gravity/SouthWest/dx/15/dy/7|imageslim`
+        let imageName = thumb ? thumb : 'thumb-article.jpg';
+        return '../images/thumb-article.jpg' + thumb;
       },
       toDetail() {
         if (this.mobileLayout) {

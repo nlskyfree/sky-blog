@@ -80,7 +80,7 @@ const mutations = {
   LIKE_ARTICLE(state, action) {
     let article = state.detail.data
     if (Object.is(article.id, action.id)) {
-      state.detail.data.meta.likes ++
+      state.detail.data.likes ++
     }
   }
 }

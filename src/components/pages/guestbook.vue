@@ -10,7 +10,7 @@
     </div>
     <div class="comment">
       <comment-box :post-id="0" 
-                   :likes="$store.state.option.globalOption.data.meta.likes">
+                   :likes="$store.state.option.globalOption.data.likes">
       </comment-box>
     </div>
   </div>

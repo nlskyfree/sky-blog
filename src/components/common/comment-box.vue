@@ -78,7 +78,7 @@
                 <div v-html="marked(comment.content)"></div>
               </div>
               <div class="cm-footer">
-                <span class="create_at">{{ comment.create_at | timeAgo }}</span>
+                <span class="createAt">{{ comment.createAt | timeAgo }}</span>
                 <a href="" class="reply" @click.stop.prevent="replyComment(comment)">
                   <i class="iconfont icon-reply"></i>
                   <span>回复</span>
@@ -914,14 +914,14 @@
             > .cm-footer {
               display: flex;
 
-              > .create_at,
+              > .createAt,
               > .reply,
               > .like {
                 font-size: .8em;
                 margin-right: 1em;
               }
 
-              > .create_at {
+              > .createAt {
                 color: @disabled;
               }
 

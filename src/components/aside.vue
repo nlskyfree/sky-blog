@@ -31,7 +31,7 @@
         <li class="item" :key="item.id" v-for="item in article.data.slice(0, 10)">
           <span class="index"></span>
           <router-link class="title" 
-                       :title="`${item.title} - [ ${item.meta.comments} 条评论  |  ${item.meta.likes} 人喜欢 ]`"
+                       :title="`${item.title} - [ ${item.comments} 条评论  |  ${item.likes} 人喜欢 ]`"
                        :to="`/article/${item.id}`">
             <span>{{ item.title }}</span>
           </router-link>

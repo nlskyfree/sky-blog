@@ -111,7 +111,7 @@ const mutations = {
 
   // 喜欢本站
   LIKE_SITE(state, action) {
-    state.globalOption.data.meta.likes ++
+    state.globalOption.data.likes ++
   },
 
   // 切换弹幕状态
