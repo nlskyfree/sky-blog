@@ -17,7 +17,7 @@
           <p class="meta">
             <span class="item star">
               <i class="iconfont icon-star"></i>
-              <span>{{ project.stargazers_count }}</span>
+              <span>{{ project.stargazersCount }}</span>
             </span>
             <span class="item fork">
               <i class="iconfont icon-git-fork"></i>

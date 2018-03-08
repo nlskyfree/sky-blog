@@ -3,12 +3,12 @@
     <div class="detail">
       <h2 class="title">{{ article.title || '...' }}</h2>
       <transition name="module" mode="out-in">
-        <empty-box class="article-empty-box" v-if="!fetching && !article.title">
+        <empty-box class="article-empty-box" v-if="!article.title">
           <slot>No Result Article.</slot>
         </empty-box>
       </transition>
       <transition name="module" mode="out-in">
-        <div class="content" v-html="articleContent" v-if="!fetching && article.content"></div>
+        <div class="content" v-html="articleContent" v-if="article.content"></div>
       </transition>
       <transition name="module" mode="out-in">
         <div class="readmore" v-if="canReadMore">
@@ -20,45 +20,37 @@
       </transition>
     </div>
     <transition name="module" mode="out-in">
-      <div class="metas" v-if="!fetching && article.title">
+      <div class="metas" v-if="article.title">
         <p class="item">
           <span>本文于</span>
           <span>&nbsp;</span>
-          <router-link :title="buildDateTitle(article.create_at)"
-                       :to="buildDateLink(article.create_at)">
-            <span>{{ buildDateTitle(article.create_at) }}</span>
+          <router-link :title="buildDateTitle(article.createAt)"
+                       :to="buildDateLink(article.createAt)">
+            <span>{{ buildDateTitle(article.createAt) }}</span>
           </router-link>
           <span>&nbsp;发布在&nbsp;</span>
           <router-link :key="index"
                        :to="`/category/${category.slug}`"
                        :title="category.description || category.name"
-                       v-for="(category, index) in article.category">
+                       v-for="(category, index) in article.categories">
             <span>{{ category.name }}</span>
-            <span v-if="article.category.length && article.category[index + 1]">、</span>
+            <span v-if="article.categories.length && article.categories[index + 1]">、</span>
           </router-link>
-          <span v-if="!article.category.length">未知</span>
+          <span v-if="!article.categories.length">未知</span>
           <span>&nbsp;分类下，当前已被围观&nbsp;</span>
-          <span>{{ article.meta.views || 0 }}</span>
+          <span>{{ article.views || 0 }}</span>
           <span>&nbsp;次</span>
         </p>
         <p class="item">
           <span>相关标签：</span>
-          <span v-if="!article.tag.length">无相关标签</span>
+          <span v-if="!article.tags.length">无相关标签</span>
           <router-link :key="index"
                        :to="`/tag/${tag.slug}`"
                        :title="tag.description || tag.name"
-                       v-for="(tag, index) in article.tag">
+                       v-for="(tag, index) in article.tags">
             <span>{{ tag.name }}</span>
-            <span v-if="article.tag.length && article.tag[index + 1]">、</span>
+            <span v-if="article.tags.length && article.tags[index + 1]">、</span>
           </router-link>
-        </p>
-        <p class="item">
-          <span>永久地址：</span>
-          <span ref="copy_url_btn"
-                class="site-url"
-                :data-clipboard-text="`https://surmon.me/article/${this.article.id}`">
-                <span>https://surmon.me/article/{{ article.id }}</span>
-          </span>
         </p>
         <div class="item">
           <span>版权声明：</span>
@@ -72,8 +64,8 @@
     </transition>
     <div class="comment">
       <comment-box :post-id="article.id"
-                   :likes="article.meta.likes"
-                   v-if="!fetching && article.title">
+                   :likes="article.likes"
+                   v-if="article.title">
       </comment-box>
     </div>
   </div>
@@ -81,17 +73,12 @@
 
 <script>
   import Clipboard from 'clipboard'
-  import marked from 'marked'
+  import marked from 'utils/marked'
 
   export default {
     name: 'article-detail',
     validate ({ params, store }) {
       return (!!params.article_id && !Object.is(Number(params.article_id), NaN))
-    },
-    fetch ({ store, params, error }) {
-      return store.dispatch('loadArticleDetail', params).catch(err => {
-        error({ statusCode: 404, message: '众里寻他 我已不再' })
-      })
     },
     head() {
       const article = this.article
@@ -124,7 +111,8 @@
       }
     },
     mounted() {
-      this.clipboard()
+      this.clipboard();
+      this.$store.dispatch('loadArticleDetail', this.$route.params);
     },
     computed: {
       article() {
@@ -133,7 +121,7 @@
       articleContent() {
         let content = this.article.content
         if (!content) return ''
-        const hasTags = Object.is(this.tags.code, 1) && !!this.tags.data.length
+        const hasTags = !!this.tags.length
         if (content.length > 13688 && !this.fullContentEd) {
           this.canReadMore = true
           let shortContent = content.substring(0, 11688)
@@ -232,7 +220,10 @@
     }
 
     > .detail,
-    > .metas,
+    > .metas {
+      margin-bottom: 1em;
+      background-color: @module-bg;
+    }
 
     > .detail {
       padding: 1em 2em;
@@ -502,16 +493,6 @@
 
         a:hover {
           text-decoration: underline;
-        }
-
-        .site-url {
-          text-decoration: underline;
-          cursor: pointer;
-          color: @link-color;
-
-          &:hover {
-            color: @link-hover-color;
-          }
         }
       }
     }

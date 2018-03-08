@@ -20,15 +20,6 @@ const state = () => {
     // 移动端侧边栏
     mobileSidebar: false,
 
-    // 是否开启弹幕
-    openBarrage: false,
-
-    // 弹幕是否已首次渲染
-    barrageMounted: false,
-
-    // 是否开启rtc
-    openWebrtc: false,
-
     // ua
     userAgent: '',
 
@@ -42,9 +33,7 @@ const state = () => {
     globalOption: {
       fetching: false,
       data: {
-        meta: {
-          likes: 0
-        }
+        likes: 0
       }
     }
   }
@@ -113,27 +102,6 @@ const mutations = {
   LIKE_SITE(state, action) {
     state.globalOption.data.likes ++
   },
-
-  // 切换弹幕状态
-  UPDATE_BARRAGE_STATE(state, action) {
-    if (action !== undefined) {
-      state.openBarrage = !!action
-    } else {
-      state.openBarrage = !state.openBarrage
-    }
-    if (state.openBarrage && !state.barrageMounte) {
-      state.barrageMounted = true
-    }
-  },
-
-  // 切换RTC状态
-  UPDATE_WEBRTC_STATE(state, action) {
-    if (action !== undefined) {
-      state.openWebrtc = !!action
-    } else {
-      state.openWebrtc = !state.openWebrtc
-    }
-  }
 }
 
 

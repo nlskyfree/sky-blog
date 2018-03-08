@@ -64,9 +64,11 @@
       this.$store.commit('option/SET_MOBILE_LAYOUT', isMobile)
       this.$store.commit('option/SET_USER_AGENT', userAgent)
       this.$store.dispatch('loadHotArticles')
+      this.$store.dispatch('loadCategories')
+      this.$store.dispatch('loadTagList')
       // 配置数据
-      // this.$store.dispatch('loadAdminInfo'),
-      // this.$store.dispatch('loadGlobalOption'),
+      this.$store.dispatch('loadAdminInfo'),
+      this.$store.dispatch('loadGlobalOption')
     }
   }
 </script>

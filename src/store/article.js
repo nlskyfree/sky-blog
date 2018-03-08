@@ -72,8 +72,7 @@ const mutations = {
     state.detail.data = {}
   },
   GET_DETAIL_SUCCESS(state, action) {
-    state.detail.fetching = false
-    state.detail.data = action.result
+    state.detail.data = action
   },
 
   // 喜欢某篇文章

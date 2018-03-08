@@ -208,7 +208,7 @@ export default new Vuex.Store({
     // 获取文章详情
     loadArticleDetail({ commit }, params = {}) {
       commit('article/REQUEST_DETAIL')
-      return axios.get(`/article/${params.article_id}`)
+      return axios.get(`/article/${params.id}`)
         .then(response => {
           const success = !!response.status && response.data
           if (success) commit('article/GET_DETAIL_SUCCESS', response.data)

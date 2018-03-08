@@ -85,6 +85,9 @@ module.exports = {
       filename: 'css/style.css',
       allChunks: true,
       disable: false
-    })
+    }),
+    new webpack.ProvidePlugin({
+      marked: 'marked'
+    }),
   ]
 }

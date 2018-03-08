@@ -27,7 +27,7 @@
       <empty-box v-if="!article.fetching && !article.data.length">
         <slot>No Result Hot Articles.</slot>
       </empty-box>
-      <ul class="aside-article-list" v-else-if="!article.fetching && article.data.length">
+      <ul class="aside-article-list" v-else>
         <li class="item" :key="item.id" v-for="item in article.data.slice(0, 10)">
           <span class="index"></span>
           <router-link class="title" 
@@ -98,9 +98,6 @@
       if (!this.$store.state.mobileLayout) {
         this.$store.dispatch('loadHotArticles')
       }
-
-      // 加载右侧标签列表
-      this.$store.dispatch('loadTagList')
     },
     computed: {
       tag() {

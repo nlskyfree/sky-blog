@@ -242,7 +242,7 @@
 
 <script>
   import gravatar from 'gravatar'
-  import marked from 'marked'
+  import marked from 'utils/marked'
   import EventBus from 'utils/event-bus'
   import { UAParse, OSParse } from 'utils/comment-ua-parse'
   import { scrollTo } from 'utils/scroll-to-anywhere'
@@ -307,7 +307,7 @@
         return this.comment.data.data.find(comment => Object.is(comment.id, this.pid))
       },
       blacklist() {
-        return this.$store.state.option.globalOption.data.blacklist
+        return this.$store.state.option.globalOption.blacklist
       },
       mobileLayout() {
         return this.$store.state.option.mobileLayout

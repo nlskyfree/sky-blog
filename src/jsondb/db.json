@@ -19,11 +19,11 @@
         "views": "115",
         "comments": "131",
         "likes": "234",
-        "category": [{
+        "categories": [{
             "name": "计算机",
             "slug": "soul"
         }],
-        "tag": [{
+        "tags": [{
             "name": "灵魂",
             "slug": "web"
         }]
@@ -79,7 +79,7 @@
             "forksCount": "2",
             "description": "呵呵哒项目，让你呵呵哒项目，让你呵呵哒",
             "openIssuesCount": "5",
-            "stargazers_count": "13",
+            "stargazersCount": "13",
             "createAt": "2018-03-10",
             "language": "java"
         },
@@ -92,7 +92,7 @@
             "forksCount": "2",
             "description": "呵呵哒项目，让你呵呵哒哈哈哈",
             "openIssuesCount": "5",
-            "stargazers_count": "13",
+            "stargazersCount": "13",
             "createAt": "2018-03-10",
             "language": "java"
         },
@@ -105,7 +105,7 @@
             "forksCount": "2",
             "description": "呵呵哒项目，让你呵呵哒",
             "openIssuesCount": "5",
-            "stargazers_count": "13",
+            "stargazersCount": "13",
             "createAt": "2018-03-10",
             "language": "java"
         }
